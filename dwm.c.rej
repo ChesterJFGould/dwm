@@ -1,0 +1,13 @@
+--- dwm.c
++++ dwm.c
+@@ -125,9 +126,8 @@ struct Monitor {
+ 	unsigned int tagset[2];
+ 	int showbar;
+ 	int topbar;
+-	Client *clients;
++	Clientlist *cl;
+ 	Client *sel;
+-	Client *stack;
+ 	Monitor *next;
+ 	Window barwin;
+ 	const Layout *lt[2];
