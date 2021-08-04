@@ -6,7 +6,7 @@ static const unsigned int gappx     = 8;
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "LiterationMono Nerd Font:size=10" };
+static const char *fonts[]          = { "LiterationMono Nerd Font:pixelsize=14" };
 #include "/home/chester/.cache/wal/colors-wal-dwm-alt.h"
 
 /* tagging */
@@ -37,7 +37,7 @@ static const Layout layouts[] = {
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 	{ "[D]",      deck },
-	{ "|+|",      tatami },
+	{ "M+",      tatami },
 };
 
 /* key definitions */
