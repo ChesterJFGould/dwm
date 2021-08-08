@@ -1,13 +1,11 @@
---- dwm.c
-+++ dwm.c
-@@ -125,9 +126,8 @@ struct Monitor {
- 	unsigned int tagset[2];
- 	int showbar;
- 	int topbar;
--	Client *clients;
-+	Clientlist *cl;
- 	Client *sel;
--	Client *stack;
- 	Monitor *next;
- 	Window barwin;
- 	const Layout *lt[2];
+--- dwm.c	2020-07-04 13:56:23.316739958 +0200
++++ dwm.c	2020-07-04 14:14:54.124590755 +0200
+@@ -59,7 +59,7 @@
+ 
+ /* enums */
+ enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
+-enum { SchemeNorm, SchemeSel }; /* color schemes */
++enum { SchemeNorm, SchemeInv, SchemeSel }; /* color schemes */
+ enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
+        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
+        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
