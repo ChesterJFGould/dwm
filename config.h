@@ -1,13 +1,29 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 8;
-static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static unsigned int borderpx  = 2;        /* border pixel of windows */
+static unsigned int gappx     = 8;
+static unsigned int snap      = 32;       /* snap pixel */
+static int showbar            = 1;        /* 0 means no bar */
+static int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "LiterationMono Nerd Font:pixelsize=14" };
-#include "/home/chester/.cache/wal/colors-wal-dwm-alt.h"
+
+static char norm_fg[] = "#000000";
+static char norm_bg[] = "#000000";
+static char norm_bd[] = "#000000";
+static char inv_fg[] = "#000000";
+static char inv_bg[] = "#000000";
+static char inv_bd[] = "#000000";
+static char sel_fg[] = "#000000";
+static char sel_bg[] = "#000000";
+static char sel_bd[] = "#000000";
+
+static char *colors[][3] = {
+       /*               fg     bg     border */
+       [SchemeNorm] = { norm_fg, norm_bg, norm_bd },
+       [SchemeInv]  = { inv_fg, inv_bg, inv_bd },
+       [SchemeSel]  = { sel_fg, sel_bg, sel_bd },
+};
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -22,9 +38,9 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.75; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static float mfact     = 0.75; /* factor of master area size [0.05..0.95] */
+static int nmaster     = 1;    /* number of clients in master area */
+static int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 #include "tatami.c"
@@ -33,11 +49,11 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "=[]",      tileRight },    /* first entry is default */
 	{ "[]=",      tileLeft },    /* first entry is default */
-	{ "|M|",      centeredmaster },
+	{ "=M=",      centeredmaster },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-	{ "[D]",      deck },
-	{ "M+",      tatami },
+	{ "[]|",      deck },
+	{ "[]+",      tatami },
 };
 
 /* key definitions */
@@ -55,6 +71,23 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "st", NULL };
+
+/*
+ *  * Xresources preferences to load at startup
+ *  */
+ResourcePref resources[] = {
+	{ "normfgcolor",        STRING,  &(norm_fg) },
+	{ "normbgcolor",        STRING,  &(norm_bg) },
+	{ "normbdcolor",    STRING,  &(norm_bd) },
+	{ "invfgcolor",         STRING,  &(inv_fg) },
+	{ "invbgcolor",         STRING,  &(inv_bg) },
+	{ "invbdcolor",     STRING,  &(inv_bd) },
+	{ "selfgcolor",         STRING,  &(sel_fg) },
+	{ "selbgcolor",         STRING,  &(sel_bg) },
+	{ "selbdcolor",     STRING,  &(sel_bd) },
+};
+
+
 
 static Key keys[] = {
 	/* modifier                     key             function        argument */

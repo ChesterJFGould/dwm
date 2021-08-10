@@ -1,11 +1,11 @@
---- dwm.c	2020-07-04 13:56:23.316739958 +0200
-+++ dwm.c	2020-07-04 14:14:54.124590755 +0200
-@@ -59,7 +59,7 @@
+--- dwm.c
++++ dwm.c
+@@ -248,6 +262,8 @@ static int xerror(Display *dpy, XErrorEvent *ee);
+ static int xerrordummy(Display *dpy, XErrorEvent *ee);
+ static int xerrorstart(Display *dpy, XErrorEvent *ee);
+ static void zoom(const Arg *arg);
++static void load_xresources(void);
++static void resource_load(XrmDatabase db, char *name, enum resource_type rtype, void *dst);
  
- /* enums */
- enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
--enum { SchemeNorm, SchemeSel }; /* color schemes */
-+enum { SchemeNorm, SchemeInv, SchemeSel }; /* color schemes */
- enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
-        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
-        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
+ /* variables */
+ static const char broken[] = "broken";
